@@ -1,0 +1,16 @@
+[package]
+name = "cataas"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { version = "0.11.12", features = ["json"] }
+serde = { version = "1.0.147", features = ["derive"] }
+thiserror = "1.0.37"
+time = { version = "0.3.16", features = ["serde", "parsing"] }
+
+[dev-dependencies]
+anyhow = "1.0.66"
+tokio = { version = "1.21.2", features = ["macros"] }
