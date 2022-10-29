@@ -8,7 +8,7 @@ use crate::{
 
 use super::Format;
 
-#[derive(Debug, Clone, Default, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize)]
+#[derive(Debug, Default, Serialize)]
 struct Params {
     #[serde(rename = "type")]
     image_type: Option<ImageType>,
@@ -20,6 +20,7 @@ struct Params {
     json: Option<bool>,
 }
 
+#[derive(Debug)]
 pub struct Says<'a> {
     client: &'a Client,
     format: Format,

@@ -4,6 +4,7 @@ use thiserror::Error;
 
 use crate::methods::{Cat, Says};
 
+#[derive(Debug)]
 pub struct Client {
     client: reqwest::Client,
 }
