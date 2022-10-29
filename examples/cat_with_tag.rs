@@ -1,14 +1,20 @@
-use std::env;
-
-use anyhow::{Context, Result};
+use anyhow::Result;
 use cataas::Client;
+use clap::Parser;
+
+/// Get a random cat, searching by tag
+#[derive(Debug, Parser)]
+struct Args {
+    /// Name of the tag
+    tag: String,
+}
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<()> {
-    let tag = env::args().nth(1).context("missing tag argument")?;
+    let args = Args::parse();
 
     let client = Client::new();
-    let cat = client.cat().tag(tag).send().await?;
+    let cat = client.cat().tag(args.tag).send().await?;
 
     println!("        ID: {}", cat.id);
     println!("      File: {}", cat.file);

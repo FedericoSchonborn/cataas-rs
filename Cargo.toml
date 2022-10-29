@@ -13,4 +13,5 @@ time = { version = "0.3.16", features = ["serde", "parsing"] }
 
 [dev-dependencies]
 anyhow = "1.0.66"
+clap = { version = "4.0.18", default-features = false, features = ["derive", "std", "help"] }
 tokio = { version = "1.21.2", features = ["macros"] }

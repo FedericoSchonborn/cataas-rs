@@ -1,15 +1,22 @@
-use std::env;
-
 use anyhow::Result;
 use cataas::Client;
+use clap::Parser;
+
+/// Get a random cat
+#[derive(Debug, Parser)]
+struct Args {
+    /// Get an animated cat
+    #[clap(long)]
+    gif: bool,
+}
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<()> {
-    let gif = env::args().nth(1).is_some();
+    let args = Args::parse();
 
     let client = Client::new();
     let mut request = client.cat();
-    if gif {
+    if args.gif {
         request.gif();
     }
     let cat = request.send().await?;
