@@ -53,7 +53,7 @@ impl Client {
     }
 
     pub async fn tags(&self) -> Result<Vec<String>, Error> {
-        self.request(Method::GET, "api/tags", ()).await
+        self.request(Method::GET, "/api/tags", ()).await
     }
 }
 
