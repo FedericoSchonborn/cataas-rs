@@ -38,8 +38,29 @@ impl<'a> Cat<'a> {
         }
     }
 
+    pub fn with_gif(&mut self, gif: bool) -> &mut Self {
+        if gif {
+            self.format = Format::Gif;
+        } else if let Format::Gif = self.format {
+            self.format = Format::Jpeg;
+        }
+
+        self
+    }
+
     pub fn gif(&mut self) -> &mut Self {
-        self.format = Format::Gif;
+        self.with_gif(true)
+    }
+
+    pub fn with_tag<S>(&mut self, tag: Option<S>) -> &mut Self
+    where
+        S: Into<String>,
+    {
+        match tag {
+            Some(value) => self.format = Format::TaggedJpeg(value.into()),
+            None => self.format = Format::Jpeg,
+        }
+
         self
     }
 
@@ -47,28 +68,43 @@ impl<'a> Cat<'a> {
     where
         S: Into<String>,
     {
-        self.format = Format::TaggedJpeg(tag.into());
+        self.with_tag(Some(tag))
+    }
+
+    pub fn with_image_type(&mut self, image_type: Option<ImageType>) -> &mut Self {
+        self.params.image_type = image_type;
         self
     }
 
     pub fn image_type(&mut self, image_type: ImageType) -> &mut Self {
-        self.params.image_type = Some(image_type);
+        self.with_image_type(Some(image_type))
+    }
+
+    pub fn with_filter(&mut self, filter: Option<Filter>) -> &mut Self {
+        self.params.filter = filter;
         self
     }
 
     pub fn filter(&mut self, filter: Filter) -> &mut Self {
-        self.params.filter = Some(filter);
+        self.with_filter(Some(filter))
+    }
+
+    pub fn with_width(&mut self, width: Option<usize>) -> &mut Self {
+        self.params.width = width;
         self
     }
 
     pub fn width(&mut self, width: usize) -> &mut Self {
-        self.params.width = Some(width);
+        self.with_width(Some(width))
+    }
+
+    pub fn with_height(&mut self, height: Option<usize>) -> &mut Self {
+        self.params.height = height;
         self
     }
 
     pub fn height(&mut self, height: usize) -> &mut Self {
-        self.params.height = Some(height);
-        self
+        self.with_height(Some(height))
     }
 
     pub async fn send(&self) -> Result<types::Cat, Error> {

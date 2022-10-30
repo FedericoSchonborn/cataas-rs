@@ -12,12 +12,19 @@ impl ClientBuilder {
         Self::default()
     }
 
+    pub fn set_user_agent<S>(&mut self, user_agent: Option<S>) -> &mut Self
+    where
+        S: Into<String>,
+    {
+        self.user_agent = user_agent.map(Into::into);
+        self
+    }
+
     pub fn user_agent<S>(&mut self, user_agent: S) -> &mut Self
     where
         S: Into<String>,
     {
-        self.user_agent = Some(user_agent.into());
-        self
+        self.set_user_agent(Some(user_agent))
     }
 
     #[must_use]
