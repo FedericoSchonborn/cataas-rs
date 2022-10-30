@@ -47,8 +47,11 @@ impl<'a> Says<'a> {
         self
     }
 
-    pub fn tag(&mut self, tag: String) -> &mut Self {
-        self.format = Format::TaggedJpeg(tag);
+    pub fn tag<S>(&mut self, tag: S) -> &mut Self
+    where
+        S: Into<String>,
+    {
+        self.format = Format::TaggedJpeg(tag.into());
         self
     }
 
@@ -77,8 +80,11 @@ impl<'a> Says<'a> {
         self
     }
 
-    pub fn color(&mut self, color: String) -> &mut Self {
-        self.params.color = Some(color);
+    pub fn color<S>(&mut self, color: S) -> &mut Self
+    where
+        S: Into<String>,
+    {
+        self.params.color = Some(color.into());
         self
     }
 
