@@ -1,26 +1,2 @@
-[package]
-name = "cataas"
-version = "0.0.1"
-description = "Cat as a Service API wrapper"
-authors = ["Federico Damián Schonborn <fdschonborn@gmail.com>"]
-license = "BSD-3-Clause"
-repository = "https://github.com/FedericoSchonborn/cataas-rs"
-readme = "README.md"
-categories = ["api-bindings"]
-keywords = ["cataas", "kitty", "cat", "meow", "purr"]
-edition = "2021"
-
-[dependencies]
-reqwest = { version = "0.11.12", features = ["json"] }
-serde = { version = "1.0.147", features = ["derive"] }
-thiserror = "1.0.37"
-time = { version = "0.3.16", features = ["serde", "parsing"] }
-
-[dev-dependencies]
-anyhow = "1.0.66"
-clap = { version = "4.0.18", default-features = false, features = [
-    "derive",
-    "std",
-    "help",
-] }
-tokio = { version = "1.21.2", features = ["macros"] }
+[workspace]
+members = ["cataas", "cataacli"]
