@@ -1,4 +1,6 @@
-# Unreleased
+<!-- markdownlint-disable MD012 MD024 -->
+
+# 0.0.2
 
 ## `cataas`
 

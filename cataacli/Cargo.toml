@@ -1,6 +1,6 @@
 [package]
 name = "cataacli"
-version = "0.0.1"
+version = "0.0.2"
 description = "Cat as a Command Line Interface"
 authors = ["Federico Damián Schonborn <fdschonborn@gmail.com>"]
 license = "BSD-3-Clause"

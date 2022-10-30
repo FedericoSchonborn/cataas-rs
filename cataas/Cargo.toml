@@ -1,6 +1,6 @@
 [package]
 name = "cataas"
-version = "0.0.1"
+version = "0.0.2"
 description = "Cat as a Service API wrapper"
 authors = ["Federico Damián Schonborn <fdschonborn@gmail.com>"]
 license = "BSD-3-Clause"
