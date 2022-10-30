@@ -1,8 +1,10 @@
-<!-- markdownlint-disable MD012 MD024 -->
+<!-- markdownlint-disable MD024 -->
 
-# 0.0.2
+# Changelog
 
-## `cataas`
+## 0.0.2
+
+### `cataas`
 
 - Added `ClientBuilder`.
   - Added `Client::builder`.
@@ -14,12 +16,12 @@
   - Added `ParseImageTypeError` and `ParseFilterError` error types.
 - Added `with_*` variants for `Cat` and `Says` parameters.
 
-## `cataacli`
+### `cataacli`
 
 - Initial release.
 
-# 0.0.1
+## 0.0.1
 
-## `cataas`
+### `cataas`
 
 Initial release.
