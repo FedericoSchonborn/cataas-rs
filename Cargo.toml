@@ -2,7 +2,7 @@
 members = ["cataas", "cataacli"]
 
 [workspace.package]
-version = "0.0.1"
+version = "0.0.2"
 authors = ["Federico Damián Schonborn <fdschonborn@gmail.com>"]
 license = "BSD-3-Clause"
 repository = "https://github.com/FedericoSchonborn/cataas-rs"
