@@ -1,3 +1,5 @@
+//! Cat as a Service API methods.
+
 mod cat;
 mod says;
 

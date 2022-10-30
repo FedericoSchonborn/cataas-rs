@@ -1,3 +1,5 @@
+//! Cat as a Service API types.
+
 use std::str::FromStr;
 
 use serde::{Deserialize, Serialize};

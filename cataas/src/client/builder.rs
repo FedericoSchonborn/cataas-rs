@@ -1,12 +1,12 @@
-use crate::{Client, USER_AGENT};
+use crate::{client::USER_AGENT, Client};
 
-#[allow(clippy::module_name_repetitions)]
+/// Builder for [`Client`].
 #[derive(Debug, Default)]
-pub struct ClientBuilder {
+pub struct Builder {
     user_agent: Option<String>,
 }
 
-impl ClientBuilder {
+impl Builder {
     #[must_use]
     pub fn new() -> Self {
         Self::default()

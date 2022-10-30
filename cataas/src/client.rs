@@ -1,16 +1,20 @@
+//! Cat as a Service API client.
+
 use reqwest::Method;
 use serde::{de::DeserializeOwned, Serialize};
-use thiserror::Error;
 
 use crate::methods::{Cat, Says};
 
 mod builder;
+mod error;
 pub use builder::*;
+pub use error::*;
 
 /// User agent of this library, intended to be appended to the user agent of a consuming library or
 /// program.
 pub const USER_AGENT: &str = concat!("cataas-rs/", env!("CARGO_PKG_VERSION"));
 
+/// Cat as a Service client.
 #[derive(Debug)]
 pub struct Client {
     client: reqwest::Client,
@@ -28,10 +32,10 @@ impl Client {
         }
     }
 
-    /// Create a new [`ClientBuilder`].
+    /// Create a new [`Builder`].
     #[must_use]
-    pub fn builder() -> ClientBuilder {
-        ClientBuilder::new()
+    pub fn builder() -> Builder {
+        Builder::new()
     }
 
     pub(crate) async fn request<P, R>(
@@ -69,10 +73,4 @@ impl Client {
     pub async fn tags(&self) -> Result<Vec<String>, Error> {
         self.request(Method::GET, "/api/tags", ()).await
     }
-}
-
-#[derive(Debug, Error)]
-pub enum Error {
-    #[error(transparent)]
-    Request(#[from] reqwest::Error),
 }

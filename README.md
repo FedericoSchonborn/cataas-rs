@@ -1,3 +1,3 @@
-# CATAAS
+# `cataas-rs`
 
-Cat as a Service API wrapper for Rust and command line application.
+Rust library and command line application for accessing the the Cat as a Service API.

@@ -3,7 +3,7 @@ use serde::Serialize;
 
 use crate::{
     types::{self, Filter, ImageType},
-    Client, Error,
+    Client, ClientError,
 };
 
 use super::Format;
@@ -20,6 +20,7 @@ struct Params {
     json: Option<bool>,
 }
 
+/// Provides access to `/cat/says`, `/cat/:tag/says` and `/cat/gif/says` methods.
 #[derive(Debug)]
 pub struct Says<'a> {
     client: &'a Client,
@@ -135,7 +136,7 @@ impl<'a> Says<'a> {
         self.with_color(Some(color))
     }
 
-    pub async fn send(&self) -> Result<types::Cat, Error> {
+    pub async fn send(&self) -> Result<types::Cat, ClientError> {
         let mut path = String::from("/cat");
         match self.format {
             Format::Jpeg => {}

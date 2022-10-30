@@ -1,4 +1,5 @@
 #![warn(clippy::pedantic, clippy::cargo)]
+#![doc = include_str!("../README.md")]
 
 use anyhow::{bail, Result};
 use cataas::{
@@ -65,7 +66,7 @@ async fn main() -> Result<()> {
 
     let mut user_agent = USER_AGENT.to_owned();
     user_agent.push(' ');
-    user_agent.push_str(cataas::USER_AGENT);
+    user_agent.push_str(cataas::client::USER_AGENT);
     let client = Client::builder().user_agent(user_agent).build();
 
     match args.command {
