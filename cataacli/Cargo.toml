@@ -1,4 +1,17 @@
 [package]
 name = "cataacli"
-version = "0.1.0"
+version = "0.0.1"
+description = "Cat as a Command Line Interface"
+authors = ["Federico Damián Schonborn <fdschonborn@gmail.com>"]
+license = "BSD-3-Clause"
+repository = "https://github.com/FedericoSchonborn/cataas-rs"
+readme = "README.md"
+categories = ["command-line-utilities"]
+keywords = ["cataas", "kitty", "cat", "meow", "purr"]
 edition = "2021"
+
+[dependencies]
+anyhow = "1.0.66"
+clap = { version = "4.0.18", features = ["derive"] }
+cataas = { version = "*", path = "../cataas" }
+tokio = { version = "1.21.2", features = ["macros"] }
