@@ -5,10 +5,10 @@ crates := "cataas cataacli"
 
 # Publish all crates.
 @publish-all:
-    for crate in {{ crates }}; do \
-        just publish "$crate"; \
-    done
+    just publish {{ crates }}
 
-# Publish a crate.
-@publish CRATE:
-    cargo publish -p {{ CRATE }}
+# Publish one or more crates.
+@publish +CRATES:
+    for crate in {{ CRATES }}; do \
+        cargo publish -p "$crate"; \
+    done
